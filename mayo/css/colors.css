@@ -11,7 +11,8 @@ body.overlay {
   color: #3b3b3b;
 }
 
-#page {
+#page,
+.region-menubar .menu-item--active-trail a {
   /* bg */
   background-color: #fef8dd;
 }
@@ -118,17 +119,17 @@ li a.active {
   color: #777777;
 }
 
-#menubar,
-#navigation {
+#menubar
+ {
   border-bottom-color: #e3ddb0;
 }
 
-#navigation ul li {
+#menubar ul li {
   border-right-color: #e3ddb0;
   color: #3b3b3b;
 }
 
-#navigation ul li.last {
+#menubar ul li.last {
   border-right: none;
 }
 
@@ -137,7 +138,7 @@ li a.active {
 }
 
 div.item-list ul.pager li a:hover,
-#navigation ul li a:hover {
+#menubar ul li a:hover {
   background-color: #e7e3a6;
 }
 

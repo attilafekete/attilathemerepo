@@ -5,10 +5,6 @@
  * Lists available colors and color schemes for the Mayo theme.
  */
 
-//$js = array('color' => array('menubar_style' => theme_get_setting('menubar_style', 'mayo')));
-//$js_attached_color['#attached']['drupalSettings'][] = array('data' => $js, 'type' => 'setting');
-//drupal_render($js_attached_color);
-
 $info = array(
   // Available colors and color labels used in theme.
   'fields' => array(

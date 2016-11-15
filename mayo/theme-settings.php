@@ -768,19 +768,6 @@ function mayo_form_system_theme_settings_alter(&$form, FormStateInterface $form_
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
   );
-  $form['style']['legacy_superfish_styles'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Use old legacy MAYO styles for Superfish.'),
-    '#default_value' => theme_get_setting('legacy_superfish_styles'),
-    '#description' => t('Check here if you want to add mayo-superfish.css.'),
-  );
-  $form['style']['superfish_note'] = array(
-    '#type' => 'item',
-    '#title' => t('Note:'),
-    '#markup' => t('Use this only when coming from the older non-responsive versions of MAYO
-     and your Superfish menu is broken without it. If you haven\'t been using Superfish or are
-     installing MAYO for the first time you shouldn\'t need it and can leave it unchecked.'),
-  );
   $form['style']['round_corners'] = array(
     '#type' => 'select',
     '#title' => t('Content box round corners'),
@@ -838,7 +825,7 @@ function mayo_form_system_theme_settings_alter(&$form, FormStateInterface $form_
     '#type' => 'checkbox',
     '#title' => t('Add search form to the header'),
     '#default_value' => theme_get_setting('header_searchbox'),
-    '#description' => t('Check here if you want to add search form block to the right side of the header.'),
+    '#description' => t('Check here if you want to add search form block to the right side of the header. Search module must be enabled for this to work.'),
   );
   $form['adv_header']['header_fontsizer'] = array(
     '#type' => 'checkbox',

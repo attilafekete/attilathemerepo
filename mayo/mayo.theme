@@ -7,7 +7,6 @@
 
 use Drupal\Core\Template\RenderWrapper;
 use Drupal\Core\Template\Attribute;
-use Drupal\search\Form\SearchBlockForm;
 use Drupal\Component\Utility\Html;
 use Drupal\Component\Utility\Xss;
 use Drupal\Core\Url;
@@ -19,7 +18,6 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 global  $theme_name, $path_to_mayo;
 $theme_name = \Drupal::theme()->getActiveTheme()->getName();
 $path_to_mayo = drupal_get_path('theme', 'mayo');
-//include_once($path_to_mayo . '/inc/load.inc');       // drupal_add_css() wrappers
 include_once($path_to_mayo . '/inc/get.inc');        // get theme info, settings, css etc
 
 function mayo_build_columns_width($columns) {
@@ -168,11 +166,6 @@ function mayo_preprocess_html(&$variables) {
  * @see page.html.twig
  */
 function mayo_preprocess_page(&$variables) {
-  // Add old legacy MAYO styles for Superfish.
-  if (theme_get_setting('legacy_superfish_styles') == 1) {
-    $legacy_superfish['#attached']['library'][] = 'mayo/superfish';
-    drupal_render($legacy_superfish );
-  }
 
   // Add optional stylesheets
   if (theme_get_setting('menubar_style') == 2) {
@@ -217,7 +210,7 @@ function mayo_preprocess_page(&$variables) {
     $variables['header_watermark_style']   = 'background-image: url(' . Url::fromUri('base:' . drupal_get_path('theme', 'mayo') . '/images/pat-' . $header_watermark . '.png')->toString() . ');';
   }
 
-  if ((theme_get_setting('header_searchbox', 'mayo'))) {
+  if (theme_get_setting('header_searchbox', 'mayo') && \Drupal::moduleHandler()->moduleExists('search')) {
     $variables['header_searchbox'] = theme_get_setting('header_searchbox', 'mayo');
     $variables['output_form'] = \Drupal::formBuilder()->getForm('Drupal\search\Form\SearchBlockForm');
   }
@@ -266,10 +259,6 @@ function mayo_preprocess_page(&$variables) {
   $libraries['#attached']['library'][] = 'mayo/mayo-columns';
   drupal_render($libraries);
   }
-
-  $variables['column_first'] = 'margin-left: 0px; margin-right: 5px;';
-  $variables['column_between'] = 'margin-left: 5px; margin-right: 5px;';
-  $variables['column_last'] = 'margin-left: 5px; margin-right: 0px;';
 
   $variables['top_columns_width'] =  mayo_build_columns_width( array(
             $page['top_column_first'],
@@ -328,16 +317,6 @@ function mayo_preprocess_node(&$variables) {
   }
 }
 
-/**
- * Implements hook_preprocess_HOOK() for block templates.
- */
-//function mayo_preprocess_block(&$variables) {
-  // For variables used in the search block.
-  //if ($variables['elements']['#plugin_id'] == 'search_form_block') {
-
-
-  //}
-//}
 /**
  * Implements hook_page_attachments_alter().
  */

@@ -16,7 +16,6 @@ base_vmargin: 14px
 page_width: 90%
 page_margin: 10px
 layout_style: 1
-legacy_superfish_styles: false
 round_corners: false
 header_searchbox: true
 header_fontsizer: false

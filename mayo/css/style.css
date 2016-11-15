@@ -364,6 +364,26 @@ fieldset {
   margin: 0px;
 }
 
+div.column-blocks div.column-block {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+div.column-blocks div:last-of-type div.column-block {
+  margin-left: 5px;
+  margin-right: 0px;
+}
+
+div.column-blocks div:first-of-type div.column-block {
+  margin-left: 0px;
+  margin-right: 5px;
+}
+
+div.column-blocks div:only-child div.column-block {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 .rc-2 .comment,
 .rc-2 .node,
 .rc-1 .column-block,
@@ -471,38 +491,6 @@ div#site_logo {
 
 #footer .block {
   margin: 5px 0px;
-}
-
-/**
- * Menu bar (for sub menus)
- */
-#menubar {
-  padding: 0px;
-  margin: 0px;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  padding: 4px 0px;
-}
-
-#menubar ul {
-  padding: 0px;
-  margin: 0px;
-}
-
-#menubar ul li {
-  padding: 0px;
-  margin: 0px;
-  margin-right: 0px;
-  padding: 2px 4px 2px 0px;
-  border-right-style: solid;
-  border-right-width: 1px;
-  display: inline;
-}
-
-#menubar ul li a {
-  padding: 2px 4px;
-  font-weight: normal;
-  font-size: 0.9em;
 }
 
 /**
@@ -723,7 +711,7 @@ div.tabs {
 }
 @media screen and (min-width: 37.5em) {
   .tabs ul.primary {
-    background: transparent url("../../images/tabs-border.png") repeat-x scroll left bottom;
+    background: transparent url("../images/tabs-border.png") repeat-x scroll left bottom;
     border: medium none;
     border-collapse: collapse;
     height: auto;
@@ -1246,6 +1234,103 @@ ul.nice-menu li ul li.menuparent li a:hover {
 }
 
 /**
+ * Field labels
+ */
+.field__label {
+  font-weight: bold;
+}
+
+.field--label-inline .field__label, .field--label-inline .field__items {
+  float: left;
+}
+
+.field--label-inline .field__label, .field--label-inline > .field__item, .field--label-inline .field__items {
+  padding-right: 0.5em;
+}
+
+[dir="rtl"] .field--label-inline .field__label, [dir="rtl"] .field--label-inline .field__items {
+  padding-left: 0.5em;
+  padding-right: 0;
+}
+
+.field--label-inline .field__label::after {
+  content: ":";
+}
+
+/**
+ * File fields and their icons.
+ */
+.file {
+  background-position: left center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  min-height: 16px;
+  padding-left: 20px;
+}
+
+[dir="rtl"] .file {
+  background-position: right center;
+  padding-left: inherit;
+  padding-right: 20px;
+}
+
+.file--general, .file--application-octet-stream {
+  background-image: url("../images/icons/application-octet-stream.png");
+}
+
+.file--package-x-generic {
+  background-image: url("../images/icons/package-x-generic.png");
+}
+
+.file--x-office-spreadsheet {
+  background-image: url("../images/icons/x-office-spreadsheet.png");
+}
+
+.file--x-office-document {
+  background-image: url("../images/icons/x-office-document.png");
+}
+
+.file--x-office-presentation {
+  background-image: url("../images/icons/x-office-presentation.png");
+}
+
+.file--text-x-script {
+  background-image: url("../images/icons/text-x-script.png");
+}
+
+.file--text-html {
+  background-image: url("../images/icons/text-html.png");
+}
+
+.file--text-plain {
+  background-image: url("../images/icons/text-plain.png");
+}
+
+.file--application-pdf {
+  background-image: url("../images/icons/application-pdf.png");
+}
+
+.file--application-x-executable {
+  background-image: url("../images/icons/application-x-executable.png");
+}
+
+.file--audio {
+  background-image: url("../images/icons/audio-x-generic.png");
+}
+
+.file--video {
+  background-image: url("../images/icons/video-x-generic.png");
+}
+
+.file--text {
+  background-image: url("../images/icons/text-x-generic.png");
+}
+
+.file--image {
+  background-image: url("../images/icons/image-x-generic.png");
+}
+
+/**
  * From D8 core prior to 9/29/2015
  */
 ul.menu {
@@ -1570,5 +1655,243 @@ ul.links a.is-active {
     text-decoration: none;
   }
 }
-/*@include MQ(standard-pc) {
-}   */
+/* --------------- Primary Menu ------------ */
+.region-menubar {
+  clear: both;
+}
+
+.region-menubar .menu-bart {
+  font-size: 0.929em;
+  margin: 0 5px;
+  padding: 0;
+  text-align: left;
+  /* LTR */
+}
+
+[dir="rtl"] .region-menubar .menu-bart {
+  text-align: right;
+  margin-left: 5px;
+  /* This is required to win over specificity of [dir="rtl"] ul.menu */
+  margin-right: 5px;
+  /* This is required to win over specificity of [dir="rtl"] ul.menu */
+}
+
+.region-menubar .menu-item {
+  float: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: 100%;
+}
+
+.region-menubar .menu-bart a {
+  color: #333;
+  background: #ccc;
+  background: rgba(255, 255, 255, 0.7);
+  float: none;
+  display: block;
+  text-decoration: none;
+  text-shadow: 0 1px #eee;
+  border-radius: 8px;
+  margin: 4px 0;
+  padding: 0.9em 0 0.9em 10px;
+  /* LTR */
+}
+
+[dir="rtl"] .region-menubar .menu-bart a {
+  padding: 0.9em 10px 0.9em 0;
+}
+
+.region-menubar .menu-bart a:hover,
+.region-menubar .menu-bart a:focus {
+  background: #f6f6f2;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.region-menubar .menu-bart a:active {
+  background: #b3b3b3;
+  background: white;
+}
+
+.region-menubar .menu-item a.is-active {
+  border-bottom: none;
+}
+
+/* ---------- Primary Menu Toggle ----------- */
+/* Hide the toggle by default. */
+.menu-toggle,
+.menu-toggle-target {
+  display: none;
+}
+
+/* Unhide it for the primary menu. */
+.region-menubar .menu-toggle-target {
+  display: inherit;
+  position: fixed;
+  top: 0;
+}
+
+.region-menubar .menu-toggle {
+  display: none;
+}
+
+body:not(:target) .region-menubar .menu-toggle {
+  color: #333;
+  background: #ccc;
+  background: rgba(255, 255, 255, 0.7);
+  float: none;
+  font-size: 0.929em;
+  display: block;
+  text-decoration: none;
+  text-shadow: 0 1px #eee;
+  padding: 0.9em 10px 0.9em 10px;
+  z-index: 1000;
+}
+
+body:not(:target) .region-menubar .menu-toggle:after {
+  content: "";
+  background: url(../images/icons/hamburger.svg) no-repeat;
+  background-size: contain;
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  /* LTR */
+}
+
+[dir="rtl"] body:not(:target) .region-menubar .menu-toggle:after {
+  right: initial;
+  left: 10px;
+}
+
+body:not(:target) .region-menubar .menu-toggle-target-show:target ~ .menu-toggle,
+body:not(:target) .region-menubar .menu-toggle--hide {
+  display: none;
+}
+
+body:not(:target) .region-menubar .menu-toggle-target-show:target ~ .menu-toggle--hide {
+  display: block;
+}
+
+body:not(:target) .region-menubar .menu-item {
+  height: 0;
+  overflow: hidden;
+}
+
+body:not(:target) .region-menubar .menu-toggle-target-show:target ~ .menu-bart .menu-item {
+  height: auto;
+  overflow: visible;
+}
+
+/**
+ * Media queries for primary menu.
+ */
+@media all and (min-width: 461px) and (max-width: 900px) {
+  .region-menubar .menu-bart {
+    margin: 0 5px;
+    padding: 0;
+    text-align: center;
+  }
+
+  /* This is required to win over specificity of the global [dir="rtl"] .region-menubar .menu-bart */
+  [dir="rtl"] .region-menubar .menu-bart {
+    text-align: center;
+  }
+
+  .region-menubar .menu-item,
+  body:not(:target) .region-menubar .menu-item {
+    float: left;
+    /* LTR */
+    margin-right: 5px;
+    /* LTR */
+    padding: 0;
+    display: inline-block;
+    width: 32.75%;
+    height: auto;
+    overflow: visible;
+  }
+
+  [dir="rtl"] .region-menubar .menu-item,
+  [dir="rtl"] body:not(:target) .region-menubar .menu-item {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0;
+  }
+
+  .region-menubar .menu-item:nth-child(3n) {
+    margin-right: -5px;
+    /* LTR */
+  }
+
+  [dir="rtl"] .region-menubar .menu-item:nth-child(3n) {
+    margin-left: -5px;
+    margin-right: 0;
+  }
+
+  .region-menubar .menu-bart a {
+    float: none;
+    display: block;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    padding: 0.9em 5px;
+  }
+
+  /* This is required to win over specificity of the global [dir="rtl"] .region-menubar .menu-bart a */
+  [dir="rtl"] .region-menubar .menu-bart a {
+    padding: 0.9em 5px;
+  }
+
+  body:not(:target) .region-menubar .menu-toggle {
+    display: none;
+  }
+}
+@media all and (min-width: 901px) {
+  .region-menubar .block-menu .menu-bart {
+    font-size: 0.929em;
+    margin: 0;
+    padding: 0 15px;
+  }
+
+  .region-menubar .menu-item,
+  body:not(:target) .region-menubar .menu-item {
+    float: left;
+    /* LTR */
+    list-style: none;
+    padding: 0 1px;
+    margin: 0 1px;
+    width: auto;
+    height: auto;
+    overflow: visible;
+  }
+
+  [dir="rtl"] .region-menubar .menu-item,
+  [dir="rtl"] body:not(:target) .region-menubar .menu-item {
+    float: right;
+  }
+
+  .region-menubar .menu-bart a {
+    float: left;
+    /* LTR */
+    padding: 0.7em 0.8em;
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  [dir="rtl"] .region-menubar .menu-bart a {
+    float: right;
+    padding: 0.7em 0.8em;
+  }
+
+  .featured .region-menubar .menu-item a:active,
+  .featured .region-menubar .menu-item a.is-active {
+    background: #f0f0f0;
+    background: #f0f0f0;
+  }
+
+  body:not(:target) .region-menubar .menu-toggle {
+    display: none;
+  }
+}

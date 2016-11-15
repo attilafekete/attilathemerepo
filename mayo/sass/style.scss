@@ -81,35 +81,6 @@ div#site_logo {
 }
 
 /**
- * Menu bar (for sub menus)
- */
-#menubar {
-  padding: 0px;
-  margin: 0px;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  padding: 4px 0px;
-}
-#menubar ul {
-  padding: 0px;
-  margin: 0px;
-}
-#menubar ul li {
-  padding: 0px;
-  margin: 0px;
-  margin-right: 0px;
-  padding: 2px 4px 2px 0px;
-  border-right-style: solid;
-  border-right-width: 1px;
-  display: inline;
-}
-#menubar ul li a {
-  padding: 2px 4px;
-  font-weight: normal;
-  font-size: 0.9em;
-}
-
-/**
  * Banner area (#banner-top, #banner-bottom)
  */
 .banner p {
@@ -306,7 +277,7 @@ div.tabs {
 }
 @media screen and (min-width: 37.5em) {
 .tabs ul.primary {
-    background: transparent url("../../images/tabs-border.png") repeat-x scroll left bottom;
+    background: transparent url("../images/tabs-border.png") repeat-x scroll left bottom;
     border: medium none;
     border-collapse: collapse;
     height: auto;
@@ -757,6 +728,82 @@ ul.nice-menu li ul li.menuparent li a:hover {
   padding: 0px;
 }
 /**
+ * Field labels
+ */
+.field__label {
+    font-weight: bold;
+}
+.field--label-inline .field__label, .field--label-inline .field__items {
+    float: left;
+}
+.field--label-inline .field__label, .field--label-inline > .field__item, .field--label-inline .field__items {
+    padding-right: 0.5em;
+}
+[dir="rtl"] .field--label-inline .field__label, [dir="rtl"] .field--label-inline .field__items {
+    padding-left: 0.5em;
+    padding-right: 0;
+}
+.field--label-inline .field__label::after {
+    content: ":";
+}
+/**
+ * File fields and their icons.
+ */
+.file {
+    background-position: left center;
+    background-repeat: no-repeat;
+    display: inline-block;
+    min-height: 16px;
+    padding-left: 20px;
+}
+[dir="rtl"] .file {
+    background-position: right center;
+    padding-left: inherit;
+    padding-right: 20px;
+}
+.file--general, .file--application-octet-stream {
+    background-image: url("../images/icons/application-octet-stream.png");
+}
+.file--package-x-generic {
+    background-image: url("../images/icons/package-x-generic.png");
+}
+.file--x-office-spreadsheet {
+    background-image: url("../images/icons/x-office-spreadsheet.png");
+}
+.file--x-office-document {
+    background-image: url("../images/icons/x-office-document.png");
+}
+.file--x-office-presentation {
+    background-image: url("../images/icons/x-office-presentation.png");
+}
+.file--text-x-script {
+    background-image: url("../images/icons/text-x-script.png");
+}
+.file--text-html {
+    background-image: url("../images/icons/text-html.png");
+}
+.file--text-plain {
+    background-image: url("../images/icons/text-plain.png");
+}
+.file--application-pdf {
+    background-image: url("../images/icons/application-pdf.png");
+}
+.file--application-x-executable {
+    background-image: url("../images/icons/application-x-executable.png");
+}
+.file--audio {
+    background-image: url("../images/icons/audio-x-generic.png");
+}
+.file--video {
+    background-image: url("../images/icons/video-x-generic.png");
+}
+.file--text {
+    background-image: url("../images/icons/text-x-generic.png");
+}
+.file--image {
+    background-image: url("../images/icons/image-x-generic.png");
+}
+/**
  * From D8 core prior to 9/29/2015
  */
 ul.menu {
@@ -874,3 +921,4 @@ ul.links a.is-active {
 }
 @import "partials/mobile-first";
 @import "partials/responsive-media";
+@import "partials/primary-menu";
