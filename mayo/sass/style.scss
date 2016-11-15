@@ -177,6 +177,35 @@ div#site_logo {
 /**
  * Page
  */
+/**
+ * @file
+ * Styles for breadcrumbs.
+ */
+
+.breadcrumb {
+  padding-bottom: 0.5em;
+}
+.breadcrumb ol {
+  margin: 0;
+  padding: 0;
+}
+[dir="rtl"] .breadcrumb ol {
+  /* This is required to win over specificity of [dir="rtl"] ol */
+  margin-right: 0;
+}
+.breadcrumb li {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+/* IE8 does not support :not() and :last-child. */
+.breadcrumb li:before {
+  content: ' \BB ';
+}
+.breadcrumb li:first-child:before {
+  content: none;
+}
 #breadcrumb {
   font-size: 1em;
   font-style: italic;
@@ -357,7 +386,7 @@ div.tabs {
   border-style: solid;
   border-width: 1px;
 }
-.node-sticky {
+.node--sticky {
   border-width: 0px;
 }
 
@@ -884,7 +913,7 @@ ul.links a.is-active {
 }
 .messages--status {
     background-color: #f3faef;
-    background-image: url("../../../../misc/icons/73b355/check.svg");
+    background-image: url("../../../../core/misc/icons/73b355/check.svg");
     border-color: #c9e1bd #c9e1bd #c9e1bd transparent;
     box-shadow: -8px 0 0 #77b259;
     color: #325e1c;
@@ -896,7 +925,7 @@ ul.links a.is-active {
 }
 .messages--warning {
     background-color: #fdf8ed;
-    background-image: url("../../../../misc/icons/e29700/warning.svg");
+    background-image: url("../../../../core/misc/icons/e29700/warning.svg");
     border-color: #f4daa6 #f4daa6 #f4daa6 transparent;
     box-shadow: -8px 0 0 #e09600;
     color: #734c00;
@@ -907,7 +936,7 @@ ul.links a.is-active {
 }
 .messages--error {
     background-color: #fcf4f2;
-    background-image: url("../../../../misc/icons/e32700/error.svg");
+    background-image: url("../../../../core/misc/icons/e32700/error.svg");
     border-color: #f9c9bf #f9c9bf #f9c9bf transparent;
     box-shadow: -8px 0 0 #e62600;
     color: #a51b00;
@@ -922,3 +951,6 @@ ul.links a.is-active {
 @import "partials/mobile-first";
 @import "partials/responsive-media";
 @import "partials/primary-menu";
+@import "partials/list-menu";
+@import "partials/book-navigation";
+@import "partials/form";

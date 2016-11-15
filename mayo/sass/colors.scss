@@ -90,7 +90,7 @@ li a.active {
 .node h2 { /* nodedividers */
   border-color: #b8c195;
 }
-.node-sticky {
+.node--sticky {
   background-color: #e6fba7;
 }
 .node .submitted {
@@ -127,7 +127,7 @@ div.item-list ul.pager li a:hover,
   background-color: transparent;
   color: #3b3b3b;
 }
-#content .node-sticky h2 { /* main content: block title */
+#content .node--sticky h2 { /* main content: block title */
   background-color: transparent;
 }
 #footer-wrapper {

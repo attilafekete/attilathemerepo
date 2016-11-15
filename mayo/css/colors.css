@@ -55,6 +55,7 @@ body.overlay {
   background-image: -moz-linear-gradient(left, #f99301, #ddff61);
   background-image: -webkit-linear-gradient(left, #f99301, #ddff61);
   background-image: linear-gradient(to right, #f99301, #ddff61);
+  border-color: #fdf7dc;
 }
 
 a.visited,
@@ -111,7 +112,7 @@ li a.active {
   border-color: #b8c195;
 }
 
-.node-sticky {
+.node--sticky {
   background-color: #e6fba7;
 }
 
@@ -159,7 +160,7 @@ div.item-list ul.pager li a:hover,
   color: #3b3b3b;
 }
 
-#content .node-sticky h2 {
+#content .node--sticky h2 {
   /* main content: block title */
   background-color: transparent;
 }

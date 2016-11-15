@@ -20,7 +20,7 @@ round_corners: false
 header_searchbox: true
 header_fontsizer: false
 header_border_width: 1px
-searchbox_size: 12
+searchbox_size: 13
 header_bg_file:
 header_bg_alignment: top left
 header_watermark: false

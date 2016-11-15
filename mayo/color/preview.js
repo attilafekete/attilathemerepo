@@ -94,7 +94,7 @@
       form.find('.color-preview .node h2').css('border-bottom-color', $('.js-color-palette input[name="palette[nodedivider]"]').val());
 
       // Sticky node background.
-      form.find('.color-preview .node-sticky').css('background-color', $('.js-color-palette input[name="palette[stickynode]"]').val());
+      form.find('.color-preview .node--sticky').css('background-color', $('.js-color-palette input[name="palette[stickynode]"]').val());
 
 
       // Table background
