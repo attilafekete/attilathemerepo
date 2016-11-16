@@ -38,8 +38,8 @@ plugins:
    page_layout:
    - layouts: 'layouts/core'
 
-# Information added by Drupal.org packaging script on 2016-03-28
-version: '8.x-1.2'
+# Information added by Drupal.org packaging script on 2016-05-09
+version: '8.x-1.3'
 core: '8.x'
 project: 'mayo'
-datestamp: 1459203843
+datestamp: 1462820623

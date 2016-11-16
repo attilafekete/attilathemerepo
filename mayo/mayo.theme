@@ -44,9 +44,10 @@ function mayo_build_columns_width($columns) {
  *  Use javascript to show/hide the 'search this site' prompt inside of the text field
  */
 function mayo_form_search_block_form_alter(&$form, &$form_state, $form_id) {
+  global $theme_name;
   if ($form_id == 'search_block_form') {
     unset($form['actions']['submit']);
-    $form['keys']['#size'] = theme_get_setting('searchbox_size', 'mayo');
+    $form['keys']['#size'] = theme_get_setting('searchbox_size', $theme_name);
     $prompt = t('search this site');
     $form['keys']['#default_value'] = $prompt;
     $form['actions']['submit']['#type'] = 'hidden';
@@ -166,20 +167,20 @@ function mayo_preprocess_html(&$variables) {
  * @see page.html.twig
  */
 function mayo_preprocess_page(&$variables) {
-
+  global $theme_name;
   // Add optional stylesheets
   if (theme_get_setting('menubar_style') == 2) {
     $black_menu['#attached']['library'][] = 'mayo/black-menu';
     drupal_render($black_menu);
   }
 
-  $base_vmargin = theme_get_setting('base_vmargin', 'mayo');
+  $base_vmargin = theme_get_setting('base_vmargin', $theme_name);
     if (\Drupal::service('router.admin_context')->isAdminRoute(\Drupal::routeMatch()->getRouteObject())) $base_vmargin = '0px'; // admin page
     if (empty($base_vmargin)) $base_vmargin = '0px';
   $variables['page_wrapper_style'] = ' margin-top: ' . $base_vmargin . '; margin-bottom: ' . $base_vmargin . ';';
 
-  $layout_style = theme_get_setting('layout_style', 'mayo');
-  $page_margin = theme_get_setting('page_margin', 'mayo');
+  $layout_style = theme_get_setting('layout_style', $theme_name);
+  $page_margin = theme_get_setting('page_margin', $theme_name);
   if (empty($page_margin)) $page_margin = '0px';
   if (\Drupal::service('router.admin_context')->isAdminRoute(\Drupal::routeMatch()->getRouteObject())) $page_margin = '20px'; // admin page
   if ($layout_style == 1) {
@@ -191,40 +192,40 @@ function mayo_preprocess_page(&$variables) {
 
   $variables['header_style'] = '';
 
-  $header_bg_file = theme_get_setting('header_bg_file', 'mayo');
+  $header_bg_file = theme_get_setting('header_bg_file', $theme_name);
   if ($header_bg_file) {
     $variables['header_style'] .= 'filter:;background: url(' . $header_bg_file . ') repeat ';
-    $variables['header_style'] .= theme_get_setting('header_bg_alignment', 'mayo') . ';';
+    $variables['header_style'] .= theme_get_setting('header_bg_alignment', $theme_name) . ';';
   }
   if ($layout_style == 2 || $header_bg_file) {
     // no header margin, so skip header borders to make it nicer
     $variables['header_style'] .= 'border: none;';
   }
   else {
-    $header_border_width = theme_get_setting('header_border_width', 'mayo');
+    $header_border_width = theme_get_setting('header_border_width', $theme_name);
     $variables['header_style'] .= ' border-width: ' . $header_border_width . ';';
   }
 
-  $header_watermark = theme_get_setting('header_watermark', 'mayo');
+  $header_watermark = theme_get_setting('header_watermark', $theme_name);
   if($header_watermark) {
-    $variables['header_watermark_style']   = 'background-image: url(' . Url::fromUri('base:' . drupal_get_path('theme', 'mayo') . '/images/pat-' . $header_watermark . '.png')->toString() . ');';
+    $variables['header_watermark_style']   = 'background-image: url(' . Url::fromUri('base:' . drupal_get_path('theme', $theme_name) . '/images/pat-' . $header_watermark . '.png')->toString() . ');';
   }
 
-  if (theme_get_setting('header_searchbox', 'mayo') && \Drupal::moduleHandler()->moduleExists('search')) {
-    $variables['header_searchbox'] = theme_get_setting('header_searchbox', 'mayo');
+  if (theme_get_setting('header_searchbox', $theme_name) && \Drupal::moduleHandler()->moduleExists('search')) {
+    $variables['header_searchbox'] = theme_get_setting('header_searchbox', $theme_name);
     $variables['output_form'] = \Drupal::formBuilder()->getForm('Drupal\search\Form\SearchBlockForm');
   }
 
-  $variables['menubar_background'] = theme_get_setting('menubar_background', 'mayo');
+  $variables['menubar_background'] = theme_get_setting('menubar_background', $theme_name);
   if ($variables['menubar_background'] == 1) {
-    $variables['menubar_bg_value'] = 'background-color:' . theme_get_setting('menubar_bg_value', 'mayo');
+    $variables['menubar_bg_value'] = 'background-color:' . theme_get_setting('menubar_bg_value', $theme_name);
   }
 
-  $variables['header_fontsizer'] = theme_get_setting('header_fontsizer', 'mayo');
-  $variables['sb_first_width'] = theme_get_setting('sidebar_first_width', 'mayo');
+  $variables['header_fontsizer'] = theme_get_setting('header_fontsizer', $theme_name);
+  $variables['sb_first_width'] = theme_get_setting('sidebar_first_width', $theme_name);
     if (empty($variables['sb_first_width'])) $variables['sb_first_width'] = '25%';
   $variables['sb_first_style'] = 'width: ' . $variables['sb_first_width'] . ';';
-  $variables['sb_second_width'] = theme_get_setting('sidebar_second_width', 'mayo');
+  $variables['sb_second_width'] = theme_get_setting('sidebar_second_width', $theme_name);
     if (empty($variables['sb_second_width'])) $variables['sb_second_width'] = '25%';
   $variables['sb_second_style'] = 'width: ' . $variables['sb_second_width'] . ';';
 
@@ -237,7 +238,7 @@ function mayo_preprocess_page(&$variables) {
   }
   $variables['content_style'] = 'width: ' . $content_width . '%;';
 
-  if (theme_get_setting('header_fontsizer', 'mayo')) {
+  if (theme_get_setting('header_fontsizer', $theme_name)) {
     $font_resize['#attached']['library'][] = 'mayo/fontsizer';
     drupal_render($font_resize);
   }
@@ -323,7 +324,7 @@ function mayo_preprocess_node(&$variables) {
 function mayo_page_attachments_alter(&$page) {
   global $theme_name;
 
-  if (theme_get_setting('menubar_style', 'mayo') == 2) {
+  if (theme_get_setting('menubar_style', $theme_name) == 2) {
     $page['#attached']['library'][] = 'mayo/black-menu';
   }
   // Get the path to the directory where our responsive.layout.css file is saved.
